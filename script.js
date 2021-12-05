@@ -2,6 +2,10 @@
 var container = $(".container");
 var time = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
 var currentHour = moment().hour() - 9;
+var date = $("<h1>");
+
+date.text(moment().format('dddd MMMM Do' + "," + ' YYYY'));
+container.append(date);
 // function to load dates and columns
 function eventLoad(){
     for (i = 0; i < 9; i++) {
@@ -33,12 +37,12 @@ function eventLoad(){
 };
 function saveTask() {
     localStorage.setItem($(this).attr("id"), $(this).prev().val());
-    console.log(localStorage.setItem)
     $(this).prev().transfer( {
         to: $( $(this) ),
         duration: 400
-      } );
+    } );
 };
+
 // call for the event load function to operate
 window.onload = eventLoad();
 // call for the save task button
