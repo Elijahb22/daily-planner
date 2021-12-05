@@ -37,10 +37,6 @@ function eventLoad(){
 };
 function saveTask() {
     localStorage.setItem($(this).attr("id"), $(this).prev().val());
-    $(this).prev().transfer( {
-        to: $( $(this) ),
-        duration: 400
-    } );
 };
 
 // call for the event load function to operate
