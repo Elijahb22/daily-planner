@@ -25,7 +25,21 @@ function eventLoad(){
             textArea.attr("class", "col-8 col-sm-10 description " + timeClass);
             textArea.text(localStorage.getItem("btn" + i));
             row.append(textArea);
+        var button = $("<button>");
+            button.attr("class", "col-2 col-sm-1 saveBtn fas fa-save");
+            button.attr("id", "btn" + i);
+            row.append(button);
     };
 };
-
+function saveTask() {
+    localStorage.setItem($(this).attr("id"), $(this).prev().val());
+    console.log(localStorage.setItem)
+    $(this).prev().transfer( {
+        to: $( $(this) ),
+        duration: 400
+      } );
+};
+// call for the event load function to operate
 window.onload = eventLoad();
+// call for the save task button
+$(".saveBtn").on("click", saveTask);
